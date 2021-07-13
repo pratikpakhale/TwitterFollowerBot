@@ -1,0 +1,28 @@
+Initiating..
+Getting tempMail
+previous email : bibegi2304@ovooovo.com
+clicking delete button
+Delete button clicked
+launching loop
+in while loop: bibegi2304@ovooovo.com
+in while loop: bibegi2304@ovooovo.com
+in while loop: bibegi2304@ovooovo.com
+in while loop: bibegi2304@ovooovo.com
+in while loop: Loading.
+in while loop: Loading..
+in while loop: Loading...
+in while loop: Loading.
+in while loop: Loading..
+new email id detected : sotepi6657@nhmty.com
+executing script to open new tab
+Oksana Eggins has been generated
+twitter sign up loaded
+trying to type n credentials
+credentials typed
+clicking the next button 
+switching tabs
+tabs switched
+604872
+switching tabs
+tabs switched
+enterig otp
