@@ -15,7 +15,6 @@ def random_line(fname):
   lines = open(fname).read().splitlines()
   return random.choice(lines)
 
-
 log("Initiating..")
 
 Driver = webdriver.Chrome(executable_path=r"F:\software\chromedriver_win32\chromedriver.exe")  
@@ -40,6 +39,7 @@ def checkElementbyXpath(path):
   except NoSuchElementException:
     return False
   return True
+
 def generatePassword():
   MAX_LEN = 12
   DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']  
@@ -127,7 +127,7 @@ yearSelect = Select(Driver.find_element_by_id('SELECTOR_3'))
 nextBtn = Driver.find_element_by_xpath("//span[contains(text(),'Next')]")
 
 
-log("trying to type n credentials")
+log("trying to type in credentials")
 nameTxtbx.send_keys(generatedName)
 useEmailBtn.click()
 emailTxtbx = Driver.find_element_by_name("email")
@@ -194,21 +194,22 @@ while(checkElementbyName('password') == True):
   time.sleep(0.2)
   nextBtn.click()
 
-def skip():
-  Driver.execute_script('''
-    document.getElementsByClassName('css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0')[5].click()
+time.sleep(5)
+log('skipping profile photo updation')
+
+Driver.execute_script('''
+    document.getElementsByClassName('css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0')[5].click();
   ''')
 
-log('skipping profile photo updation')
-time.sleep(5)
-skip()
-
-while(checkElementbyName('text') == False):
-  time.sleep(0.2)
-
 log('skipping bio updation')
-skip()
+while(checkElementbyXpath("//textarea[@name='text']") == False):
+  time.sleep(0.2)
+Driver.find_element_by_xpath("//textarea[@name='text']").send_keys("You know who I am.")
 
+nextBtn = Driver.find_element_by_xpath("//span[contains(text(),'Next')]")
+nextBtn.click()
+
+log("selecting language")
 while(checkElementbyXpath("//input[@type='checkbox']") == False):
   time.sleep(0.2)
 
@@ -219,6 +220,7 @@ while(checkElementbyXpath("//span[contains(text(),'English')") == True):
   time.sleep(0.2)
   nextBtn.click()
 
+log("skipping interests")
 while(checkElementbyXpath("//span[contains(text(),'What are you interested in?')]") == False):
   time.sleep(0.2)
 nextBtn = Driver.find_element_by_xpath("//span[contains(text(),'Next')]")
@@ -226,6 +228,24 @@ nextBtn.click()
 while(checkElementbyXpath("//span[contains(text(),'What are you interested in?')") == True):
   time.sleep(0.2)
   nextBtn.click()
+
+log("clicking next..")
+nextBtn = Driver.find_element_by_xpath("//span[contains(text(),'Next')]")
+while(checkElementbyXpath("//span[contains(text(),'Next')]") == False):
+  time.sleep(0.2)
+nextBtn.click()
+
+log("clicking next..")
+nextBtn = Driver.find_element_by_xpath("//span[contains(text(),'Next')]")
+while(checkElementbyXpath("//span[contains(text(),'Next')]") == False):
+  time.sleep(0.2)
+nextBtn.click()
+
+log("skkipping following..")
+time.sleep(3)
+Driver.execute_script('''
+    document.getElementsByClassName('css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0')[5].click();
+  ''')
 
 profile = "https://twitter.com/_pratikpakhale"
 Driver.get(profile)
